@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menu utama aplikasi -->
+    <menuitem
+        id="menu_sims_ppdb_root"
+        name="SIMS PPDB"
+        web_icon="sims_ppdb,static/description/icon.png"
+        sequence="35"
+    />
+
+    <!-- Submenu Master Data -->
+    <menuitem
+        id="menu_sims_ppdb_master"
+        name="Master Data"
+        parent="menu_sims_ppdb_root"
+        sequence="10"
+    />
+
+    <!-- Master Periode PPDB -->
+    <menuitem
+        id="menu_sims_ppdb_period"
+        name="Periode PPDB"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_period"
+        sequence="10"
+    />
+
+    <!-- Master Jenis Dokumen -->
+    <menuitem
+        id="menu_sims_ppdb_document_type"
+        name="Jenis Dokumen"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_document_type"
+        sequence="20"
+    />
+
+    <!-- Master Komponen Seleksi -->
+    <menuitem
+        id="menu_sims_ppdb_selection_component"
+        name="Komponen Seleksi"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_selection_component"
+        sequence="30"
+    />
+
+    <menuitem
+        id="menu_sims_ppdb_registration_path"
+        name="Jalur Pendaftaran"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_registration_path"
+        sequence="40"
+    />
+    <menuitem
+        id="menu_sims_ppdb_achievement_type"
+        name="Jenis Prestasi"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_achievement_type"
+        sequence="50"
+    />
+
+    <menuitem
+        id="menu_sims_ppdb_document_requirement"
+        name="Persyaratan Dokumen"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_document_requirement"
+        sequence="60"
+    />
+
+</odoo>
+

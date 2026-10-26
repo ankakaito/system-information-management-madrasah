@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List View -->
+    <record id="view_sims_ppdb_registration_path_list"
+            model="ir.ui.view">
+        <field name="name">
+            sims.ppdb.registration.path.list
+        </field>
+        <field name="model">sims.ppdb.registration.path</field>
+        <field name="arch" type="xml">
+            <list string="Jalur Pendaftaran"
+                  default_order="sequence, name">
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description" optional="hide"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_sims_ppdb_registration_path_form"
+            model="ir.ui.view">
+        <field name="name">
+            sims.ppdb.registration.path.form
+        </field>
+        <field name="model">sims.ppdb.registration.path</field>
+        <field name="arch" type="xml">
+            <form string="Jalur Pendaftaran">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"
+                                   placeholder="Contoh: Jalur Reguler"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <group string="Deskripsi">
+                        <field name="description"
+                               placeholder="Jelaskan ketentuan jalur pendaftaran..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_sims_ppdb_registration_path"
+            model="ir.actions.act_window">
+        <field name="name">Jalur Pendaftaran</field>
+        <field name="res_model">sims.ppdb.registration.path</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sims_ppdb_period_user,sims.ppdb.period user,model_sims_ppdb_period,base.group_user,1,1,1,1
+access_sims_ppdb_document_type_user,sims.ppdb.document.type user,model_sims_ppdb_document_type,base.group_user,1,1,1,1
+access_sims_ppdb_selection_component_user,sims.ppdb.selection.component user,model_sims_ppdb_selection_component,base.group_user,1,1,1,1
+access_sims_ppdb_registration_path_user,sims.ppdb.registration.path user,model_sims_ppdb_registration_path,base.group_user,1,1,1,1
+access_sims_ppdb_achievement_type_user,sims.ppdb.achievement.type user,model_sims_ppdb_achievement_type,base.group_user,1,1,1,1
+access_sims_ppdb_document_requirement_user,sims.ppdb.document.requirement user,model_sims_ppdb_document_requirement,base.group_user,1,1,1,1

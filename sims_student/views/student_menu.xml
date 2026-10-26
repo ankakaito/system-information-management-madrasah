@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_sim_madrasah_root"
+              name="SIM Madrasah"
+              web_icon="sims_student,static/description/icon.png"
+              sequence="10"/>
+
+    <menuitem id="menu_sim_student"
+              name="Data Siswa"
+              parent="menu_sim_madrasah_root"
+              action="action_sim_student"
+              sequence="10"/>
+
+    <menuitem id="menu_sim_student_guardian"
+              name="Data Wali"
+              parent="menu_sim_madrasah_root"
+              action="action_sim_student_guardian"
+              sequence="20"/>
+</odoo>

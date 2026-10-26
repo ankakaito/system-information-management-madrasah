@@ -1,0 +1,55 @@
+<odoo>
+    <record id="view_sims_ppdb_achievement_type_list" model="ir.ui.view">
+        <field name="name">sims.ppdb.achievement.type.list</field>
+        <field name="model">sims.ppdb.achievement.type</field>
+        <field name="arch" type="xml">
+            <list string="Jenis Prestasi">
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sims_ppdb_achievement_type_form" model="ir.ui.view">
+        <field name="name">sims.ppdb.achievement.type.form</field>
+        <field name="model">sims.ppdb.achievement.type</field>
+        <field name="arch" type="xml">
+            <form string="Jenis Prestasi">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Contoh: Juara Olimpiade"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="category"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="description"
+                               placeholder="Masukkan keterangan jenis prestasi..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sims_ppdb_achievement_type" model="ir.actions.act_window">
+        <field name="name">Jenis Prestasi</field>
+        <field name="res_model">sims.ppdb.achievement.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
+

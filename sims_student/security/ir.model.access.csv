@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sims_student_user,sims.student user,model_sim_student,base.group_user,1,1,1,1
+access_sims_student_guardian_user,sims.student.guardian user,model_sim_student_guardian,base.group_user,1,1,1,1
+access_sims_student_guardian_link_user,sims.student.guardian.link user,model_sim_student_guardian_link,base.group_user,1,1,1,1
+access_sims_student_education_user,sims.student.education user,model_sim_student_education,base.group_user,1,1,1,1

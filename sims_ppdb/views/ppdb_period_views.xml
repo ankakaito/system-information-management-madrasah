@@ -1,0 +1,96 @@
+<odoo>
+    <record id="view_sims_ppdb_period_list" model="ir.ui.view">
+        <field name="name">sims.ppdb.period.list</field>
+        <field name="model">sims.ppdb.period</field>
+        <field name="arch" type="xml">
+            <list string="Periode PPDB">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="academic_year"/>
+                <field name="wave_number"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="quota"/>
+                <field name="state" widget="badge"/>
+                <field name="active" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sims_ppdb_period_form" model="ir.ui.view">
+        <field name="name">sims.ppdb.period.form</field>
+        <field name="model">sims.ppdb.period</field>
+        <field name="arch" type="xml">
+            <form string="Periode PPDB">
+                <header>
+                    <button
+                        name="action_open"
+                        type="object"
+                        string="Buka Pendaftaran"
+                        class="btn-primary"
+                        invisible="state not in ('draft', 'closed')"
+                    />
+
+                    <button
+                        name="action_close"
+                        type="object"
+                        string="Tutup Pendaftaran"
+                        invisible="state != 'open'"
+                    />
+
+                    <button
+                        name="action_complete"
+                        type="object"
+                        string="Tandai Selesai"
+                        invisible="state not in ('open', 'closed')"
+                    />
+
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,open,closed,completed"
+                    />
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field
+                                name="name"
+                                placeholder="PPDB Gelombang 1 2027/2028"
+                            />
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Informasi Periode">
+                            <field name="code"/>
+                            <field name="academic_year"/>
+                            <field name="wave_number"/>
+                            <field name="quota"/>
+                        </group>
+
+                        <group string="Jadwal Pendaftaran">
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sims_ppdb_period" model="ir.actions.act_window">
+        <field name="name">Periode PPDB</field>
+        <field name="res_model">sims.ppdb.period</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
+
