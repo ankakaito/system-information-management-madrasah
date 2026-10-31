@@ -12,7 +12,7 @@
     <!-- Submenu Master Data -->
     <menuitem
         id="menu_sims_ppdb_master"
-        name="Master Data"
+        name="Master Data PPDB"
         parent="menu_sims_ppdb_root"
         sequence="10"
     />
@@ -60,12 +60,26 @@
     />
 
     <menuitem
+        id="menu_sims_ppdb_configuration"
+        name="Konfigurasi PPDB"
+        parent="menu_sims_ppdb_root"
+        sequence="20"
+    />        
+
+    <menuitem
         id="menu_sims_ppdb_document_requirement"
         name="Persyaratan Dokumen"
-        parent="menu_sims_ppdb_master"
+        parent="menu_sims_ppdb_configuration"
         action="action_sims_ppdb_document_requirement"
-        sequence="60"
+        sequence="10"
     />
 
+    <menuitem
+        id="menu_sims_ppdb_wave_number"
+        name="Gelombang Pendaftaran"
+        parent="menu_sims_ppdb_configuration"
+        action="action_sims_ppdb_wave"
+        sequence="10"
+    />
 </odoo>
 

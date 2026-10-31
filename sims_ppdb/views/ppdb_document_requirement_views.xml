@@ -44,11 +44,11 @@
         </field>
     </record>
 
-    <record id="action_sims_ppdb_document_requirement"
-            model="ir.actions.act_window">
+    <record id="action_sims_ppdb_document_requirement" model="ir.actions.act_window">
         <field name="name">Persyaratan Dokumen</field>
         <field name="res_model">sims.ppdb.document.requirement</field>
         <field name="view_mode">list,form</field>
+        <field name="target">current</field>
     </record>
 </odoo>
 

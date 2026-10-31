@@ -1,5 +1,5 @@
 
-from odoo import models, fields
+from odoo import models, fields, api, _
 
 
 class PpdbDocumentRequirement(models.Model):
@@ -40,6 +40,19 @@ class PpdbDocumentRequirement(models.Model):
         default=True,
     )
 
+    @api.depends('period_id.name', 'document_type_id.name')
+    def _compute_display_name(self):
+        for record in self:
+            period = record.period_id.name or ''
+            document = record.document_type_id.name or ''
+    
+            if period and document:
+                record.display_name = f'{period} - {document}'
+            elif document:
+                record.display_name = document
+            else:
+                record.display_name = 'Persyaratan Dokumen Baru'
+    
     _sql_constraints = [
         (
             'period_document_type_unique',

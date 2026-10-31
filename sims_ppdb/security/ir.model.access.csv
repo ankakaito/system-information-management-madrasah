@@ -5,3 +5,4 @@ access_sims_ppdb_selection_component_user,sims.ppdb.selection.component user,mod
 access_sims_ppdb_registration_path_user,sims.ppdb.registration.path user,model_sims_ppdb_registration_path,base.group_user,1,1,1,1
 access_sims_ppdb_achievement_type_user,sims.ppdb.achievement.type user,model_sims_ppdb_achievement_type,base.group_user,1,1,1,1
 access_sims_ppdb_document_requirement_user,sims.ppdb.document.requirement user,model_sims_ppdb_document_requirement,base.group_user,1,1,1,1
+access_sims_ppdb_wave_user,sims.ppdb.wave user,model_sims_ppdb_wave,base.group_user,1,1,1,1

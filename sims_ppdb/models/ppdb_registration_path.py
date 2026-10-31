@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api, _
 
 
 class SimsPpdbRegistrationPath(models.Model):
@@ -13,7 +13,7 @@ class SimsPpdbRegistrationPath(models.Model):
 
     code = fields.Char(
         string='Kode Jalur',
-        required=True,
+        readonly=True,
         copy=False,
     )
 
@@ -30,6 +30,18 @@ class SimsPpdbRegistrationPath(models.Model):
         string='Aktif',
         default=True,
     )
+
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get('code') or vals.get('code') == 'New':
+                vals['code'] = (
+                    self.env['ir.sequence'].next_by_code(
+                        'sims.ppdb.registration.path'
+                    ) or 'New'
+                )
+        return super().create(vals_list)
 
     _sql_constraints = [
         (

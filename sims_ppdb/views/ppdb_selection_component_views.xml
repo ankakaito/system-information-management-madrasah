@@ -1,6 +1,4 @@
-
 <odoo>
-
     <record id="view_sims_ppdb_selection_component_list" model="ir.ui.view">
         <field name="name">sims.ppdb.selection.component.list</field>
         <field name="model">sims.ppdb.selection.component</field>
@@ -36,7 +34,7 @@
 
                     <group>
                         <group string="Informasi Komponen">
-                            <field name="code"/>
+                            <field name="code" readonly="1"/>
                             <field name="component_type"/>
                             <field name="sequence"/>
                         </group>

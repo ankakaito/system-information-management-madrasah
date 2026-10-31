@@ -1,11 +1,11 @@
-from odoo import api, fields, models, _
+from odoo import  api, fields, models, _
 from odoo.exceptions import ValidationError
 
 
 class SimsPpdbPeriod(models.Model):
     _name = 'sims.ppdb.period'
     _description = 'Periode PPDB'
-    _order = 'academic_year desc, wave_number asc'
+    _order = 'academic_year desc'
 
     name = fields.Char(
         string='Nama Periode',
@@ -14,7 +14,7 @@ class SimsPpdbPeriod(models.Model):
 
     code = fields.Char(
         string='Kode Periode',
-        required=True,
+        readonly=True,
         copy=False,
     )
 
@@ -24,38 +24,14 @@ class SimsPpdbPeriod(models.Model):
         default='2027/2028',
     )
 
-    wave_number = fields.Integer(
-        string='Gelombang',
-        required=True,
-        default=1,
-    )
-
     date_start = fields.Date(
-        string='Tanggal Mulai Pendaftaran',
+        string='Tanggal Mulai Periode',
         required=True,
     )
 
     date_end = fields.Date(
-        string='Tanggal Akhir Pendaftaran',
+        string='Tanggal Akhir Periode',
         required=True,
-    )
-
-    quota = fields.Integer(
-        string='Kuota',
-        required=True,
-        default=0,
-    )
-
-    state = fields.Selection(
-        [
-            ('draft', 'Draft'),
-            ('open', 'Dibuka'),
-            ('closed', 'Ditutup'),
-            ('completed', 'Selesai'),
-        ],
-        string='Status',
-        required=True,
-        default='draft',
     )
 
     description = fields.Text(
@@ -78,16 +54,6 @@ class SimsPpdbPeriod(models.Model):
             'unique(academic_year, wave_number)',
             'Nomor gelombang harus unik dalam satu tahun ajaran.'
         ),
-        (
-            'quota_nonnegative',
-            'check(quota >= 0)',
-            'Kuota tidak boleh negatif.'
-        ),
-        (
-            'wave_positive',
-            'check(wave_number > 0)',
-            'Nomor gelombang harus lebih dari nol.'
-        ),
     ]
 
     @api.constrains('date_start', 'date_end')
@@ -102,18 +68,13 @@ class SimsPpdbPeriod(models.Model):
                     _('Tanggal akhir tidak boleh sebelum tanggal mulai.')
                 )
 
-    def action_open(self):
-        for record in self:
-            if record.state not in ('draft', 'closed'):
-                raise ValidationError(
-                    _('Hanya periode Draft atau Ditutup yang dapat dibuka.')
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get('code') or vals.get('code') == 'New':
+                vals['code'] = (
+                    self.env['ir.sequence'].next_by_code(
+                        'sims.ppdb.period'
+                    ) or 'New'
                 )
-
-            record.state = 'open'
-
-    def action_close(self):
-        self.write({'state': 'closed'})
-
-    def action_complete(self):
-        self.write({'state': 'completed'})
-
+        return super().create(vals_list)

@@ -1,5 +1,4 @@
-
-from odoo import fields, models, _
+from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -15,7 +14,8 @@ class SimsPpdbSelectionComponent(models.Model):
 
     code = fields.Char(
         string='Kode Komponen',
-        required=True,
+        readonly=True,
+        copy=False,
     )
 
     component_type = fields.Selection(
@@ -60,6 +60,17 @@ class SimsPpdbSelectionComponent(models.Model):
         string='Aktif',
         default=True,
     )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get('code') or vals.get('code') == 'New':
+                vals['code'] = (
+                    self.env['ir.sequence'].next_by_code(
+                        'sims.ppdb.selection.component'
+                    ) or 'New'
+                )
+        return super().create(vals_list)
 
     _sql_constraints = [
         (

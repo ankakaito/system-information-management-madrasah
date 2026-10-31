@@ -1,5 +1,5 @@
 
-from odoo import models, fields
+from odoo import models, fields, api, _
 
 
 class PpdbAchievementType(models.Model):
@@ -13,8 +13,8 @@ class PpdbAchievementType(models.Model):
     )
 
     code = fields.Char(
-        string='Kode',
-        required=True,
+        string='Kode Prestasi',
+        readonly=True,
         copy=False,
     )
 
@@ -45,6 +45,18 @@ class PpdbAchievementType(models.Model):
         default=True,
     )
 
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get('code') or vals.get('code') == 'New':
+                vals['code'] = (
+                    self.env['ir.sequence'].next_by_code(
+                        'sims.ppdb.achievement.type'
+                    ) or 'New'
+                )
+        return super().create(vals_list)
+    
     _sql_constraints = [
         (
             'achievement_type_code_unique',
