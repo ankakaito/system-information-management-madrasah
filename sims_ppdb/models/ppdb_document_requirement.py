@@ -1,15 +1,14 @@
+from odoo import fields, models
 
-from odoo import models, fields, api, _
 
-
-class PpdbDocumentRequirement(models.Model):
+class SimsPpdbDocumentRequirement(models.Model):
     _name = 'sims.ppdb.document.requirement'
     _description = 'Persyaratan Dokumen PPDB'
-    _order = 'period_id, sequence, id'
+    _order = 'sequence, id'
 
-    period_id = fields.Many2one(
-        comodel_name='sims.ppdb.period',
-        string='Periode PPDB',
+    wave_path_id = fields.Many2one(
+        comodel_name='sims.ppdb.wave.path',
+        string='Jalur Pendaftaran per Gelombang',
         required=True,
         ondelete='cascade',
     )
@@ -27,7 +26,7 @@ class PpdbDocumentRequirement(models.Model):
     )
 
     description = fields.Text(
-        string='Keterangan Persyaratan',
+        string='Keterangan',
     )
 
     sequence = fields.Integer(
@@ -40,24 +39,10 @@ class PpdbDocumentRequirement(models.Model):
         default=True,
     )
 
-    @api.depends('period_id.name', 'document_type_id.name')
-    def _compute_display_name(self):
-        for record in self:
-            period = record.period_id.name or ''
-            document = record.document_type_id.name or ''
-    
-            if period and document:
-                record.display_name = f'{period} - {document}'
-            elif document:
-                record.display_name = document
-            else:
-                record.display_name = 'Persyaratan Dokumen Baru'
-    
     _sql_constraints = [
         (
-            'period_document_type_unique',
-            'unique(period_id, document_type_id)',
-            'Jenis dokumen hanya boleh ditambahkan satu kali dalam periode yang sama.',
+            'wave_path_document_type_unique',
+            'unique(wave_path_id, document_type_id)',
+            'Jenis dokumen tersebut sudah ditambahkan pada jalur ini.',
         ),
     ]
-

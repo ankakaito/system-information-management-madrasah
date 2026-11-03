@@ -18,16 +18,12 @@ class SimsPpdbSelectionComponent(models.Model):
         copy=False,
     )
 
-    component_type = fields.Selection(
-        [
-            ('academic', 'Akademik'),
-            ('quran', "Baca Al-Qur'an"),
-            ('interview', 'Wawancara'),
-            ('other', 'Lainnya'),
-        ],
+    component_type_id = fields.Many2one(
+        comodel_name='sims.ppdb.selection.component.type',
         string='Jenis Komponen',
         required=True,
-        default='academic',
+        ondelete='restrict',
+        domain="[('active', '=', True)]",
     )
 
     max_score = fields.Float(

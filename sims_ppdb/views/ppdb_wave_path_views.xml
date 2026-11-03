@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List View -->
+    <record id="view_sims_ppdb_wave_path_list" model="ir.ui.view">
+        <field name="name">sims.ppdb.wave.path.list</field>
+        <field name="model">sims.ppdb.wave.path</field>
+        <field name="arch" type="xml">
+            <list string="Jalur Pendaftaran per Gelombang">
+                <field name="sequence" widget="handle"/>
+                <field name="period_id"/>
+                <field name="wave_id"/>
+                <field name="registration_path_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_sims_ppdb_wave_path_form" model="ir.ui.view">
+        <field name="name">sims.ppdb.wave.path.form</field>
+        <field name="model">sims.ppdb.wave.path</field>
+        <field name="arch" type="xml">
+            <form string="Jalur Pendaftaran per Gelombang">
+                <sheet>
+
+                    <div class="oe_title">
+                        <label for="registration_path_id"/>
+                        <h1>
+                            <field name="registration_path_id"
+                                   placeholder="Pilih Jalur Pendaftaran"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Informasi Pendaftaran">
+                            <field name="period_id"/>
+                            <field name="wave_id"/>
+                            <field name="sequence"/>
+                        </group>
+
+                        <group string="Status">
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+
+                        <!-- Persyaratan Dokumen -->
+                        <page string="Persyaratan Dokumen"
+                              name="document_requirements">
+                            <field name="document_requirement_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="document_type_id"
+                                           options="{'no_create': True}"/>
+                                    <field name="is_required"/>
+                                    <field name="description"/>
+                                    <field name="active"
+                                           column_invisible="True"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <!-- Komponen Seleksi -->
+                        <page string="Komponen Seleksi" name="selection_components">
+                            <field name="selection_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <!-- Keterangan -->
+                        <page string="Keterangan" name="description">
+                            <field name="description"
+                                   placeholder="Masukkan keterangan jalur pendaftaran..."/>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_sims_ppdb_wave_path"
+            model="ir.actions.act_window">
+        <field name="name">Jalur Pendaftaran per Gelombang</field>
+        <field name="res_model">sims.ppdb.wave.path</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">current</field>
+    </record>
+
+</odoo>

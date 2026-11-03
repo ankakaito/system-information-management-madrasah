@@ -7,7 +7,7 @@
                 <field name="sequence" widget="handle"/>
                 <field name="code"/>
                 <field name="name"/>
-                <field name="component_type"/>
+                <field name="component_type_id"/>
                 <field name="max_score"/>
                 <field name="weight"/>
                 <field name="is_required"/>
@@ -35,7 +35,7 @@
                     <group>
                         <group string="Informasi Komponen">
                             <field name="code" readonly="1"/>
-                            <field name="component_type"/>
+                            <field name="component_type_id"/>
                             <field name="sequence"/>
                         </group>
 

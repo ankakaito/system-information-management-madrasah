@@ -35,6 +35,14 @@
         sequence="20"
     />
 
+    <menuitem
+        id="menu_sims_ppdb_selection_component_type"
+        name="Jenis Komponen Seleksi"
+        parent="menu_sims_ppdb_master"
+        action="action_sims_ppdb_selection_component_type"
+        sequence="25"
+    />
+
     <!-- Master Komponen Seleksi -->
     <menuitem
         id="menu_sims_ppdb_selection_component"
@@ -66,13 +74,13 @@
         sequence="20"
     />        
 
-    <menuitem
+    <!-- <menuitem
         id="menu_sims_ppdb_document_requirement"
         name="Persyaratan Dokumen"
         parent="menu_sims_ppdb_configuration"
         action="action_sims_ppdb_document_requirement"
         sequence="10"
-    />
+    /> -->
 
     <menuitem
         id="menu_sims_ppdb_wave_number"
@@ -80,6 +88,22 @@
         parent="menu_sims_ppdb_configuration"
         action="action_sims_ppdb_wave"
         sequence="10"
+    />
+
+    <menuitem
+        id="menu_sims_ppdb_wave_path"
+        name="Jalur Pendaftaran per Gelombang"
+        parent="menu_sims_ppdb_configuration"
+        action="action_sims_ppdb_wave_path"
+        sequence="20"
+    />
+
+    <menuitem
+        id="menu_sims_ppdb_wave_path_selection"
+        name="Komponen Seleksi per Jalur"
+        parent="menu_sims_ppdb_configuration"
+        action="action_sims_ppdb_wave_path_selection"
+        sequence="40"
     />
 </odoo>
 
