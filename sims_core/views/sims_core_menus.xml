@@ -1,0 +1,48 @@
+<odoo>
+
+    <!-- ROOT MENU -->
+    <menuitem
+        id="menu_sims_core_root"
+        name="SIMS Core"
+        web_icon="sims_core,static/description/icon.png"
+        sequence="10"
+        groups="sims_core.group_sims_user"
+    />
+
+    <!-- CONFIGURATION MENU -->
+    <menuitem
+        id="menu_sims_core_configuration"
+        name="Konfigurasi"
+        parent="menu_sims_core_root"
+        sequence="10"
+    />
+
+    <!-- INSTITUTION -->
+    <menuitem
+        id="menu_sims_institution"
+        name="Profil Sekolah"
+        parent="menu_sims_core_configuration"
+        action="action_sims_institution"
+        sequence="10"
+    />
+
+    <!-- ACADEMIC YEAR -->
+    <menuitem
+        id="menu_sims_academic_year"
+        name="Tahun Ajaran"
+        parent="menu_sims_core_configuration"
+        action="action_sims_academic_year"
+        sequence="20"
+    />
+
+    <!-- SEMESTER -->
+    <menuitem
+        id="menu_sims_academic_semester"
+        name="Semester"
+        parent="menu_sims_core_configuration"
+        action="action_sims_academic_semester"
+        sequence="30"
+    />
+
+</odoo>
+

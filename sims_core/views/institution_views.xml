@@ -1,0 +1,91 @@
+<odoo>
+
+    <!-- LIST VIEW -->
+    <record id="view_sims_institution_list" model="ir.ui.view">
+        <field name="name">sims.institution.list</field>
+        <field name="model">sims.institution</field>
+        <field name="arch" type="xml">
+            <list string="Profil Sekolah / Madrasah">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="institution_type"/>
+                <field name="education_level"/>
+                <field name="npsn"/>
+                <field name="city"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_sims_institution_form" model="ir.ui.view">
+        <field name="name">sims.institution.form</field>
+        <field name="model">sims.institution</field>
+        <field name="arch" type="xml">
+            <form string="Profil Sekolah / Madrasah">
+                <sheet>
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"
+                                   placeholder="Nama Sekolah / Madrasah"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Identitas Lembaga">
+                            <field name="code"/>
+                            <field name="institution_type"/>
+                            <field name="education_level"/>
+                            <field name="npsn"/>
+                            <field name="nsm"/>
+                            <field name="accreditation"/>
+                        </group>
+
+                        <group string="Informasi Kontak">
+                            <field name="logo"
+                                   widget="image"
+                                   class="oe_avatar"/>
+                            <field name="headmaster_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="website"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Alamat">
+                            <group>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="village"/>
+                                    <field name="district"/>
+                                    <field name="city"/>
+                                </group>
+                                <group>
+                                    <field name="province"/>
+                                    <field name="postal_code"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- WINDOW ACTION -->
+    <record id="action_sims_institution" model="ir.actions.act_window">
+        <field name="name">Profil Sekolah</field>
+        <field name="res_model">sims.institution</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_sims_institution_list"/>
+    </record>
+
+</odoo>
+

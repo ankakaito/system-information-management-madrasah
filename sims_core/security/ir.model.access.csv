@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sims_institution_user,sims.institution user,model_sims_institution,sims_core.group_sims_user,1,0,0,0
+access_sims_academic_year_user,sims.academic.year user,model_sims_academic_year,sims_core.group_sims_user,1,0,0,0
+access_sims_academic_semester_user,sims.academic.semester user,model_sims_academic_semester,sims_core.group_sims_user,1,0,0,0
+access_sims_institution_admin,sims.institution admin,model_sims_institution,sims_core.group_sims_admin,1,1,1,1
+access_sims_academic_year_admin,sims.academic.year admin,model_sims_academic_year,sims_core.group_sims_admin,1,1,1,1
+access_sims_academic_semester_admin,sims.academic.semester admin,model_sims_academic_semester,sims_core.group_sims_admin,1,1,1,1

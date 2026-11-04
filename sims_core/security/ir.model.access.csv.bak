@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sims_core_sims_core,sims_core.sims_core,model_sims_core_sims_core,base.group_user,1,1,1,1
+access_sims_academic_year_user,sims.academic.year user,model_sims_academic_year,base.group_user,1,1,1,0
+access_sims_academic_semester_user,sims.academic.semester user,model_sims_academic_semester,base.group_user,1,1,1,0

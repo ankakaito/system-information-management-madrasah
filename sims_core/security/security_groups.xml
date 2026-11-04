@@ -1,0 +1,31 @@
+<odoo>
+
+    <!-- SIMS MODULE CATEGORY -->
+    <record id="module_category_sims" model="ir.module.category">
+        <field name="name">SIMS</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- SIMS PRIVILEGE -->
+    <record id="privilege_sims_core" model="res.groups.privilege">
+        <field name="name">SIMS Core</field>
+        <field name="category_id" ref="module_category_sims"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- SIMS USER -->
+    <record id="group_sims_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="privilege_id" ref="privilege_sims_core"/>
+    </record>
+
+    <!-- SIMS ADMINISTRATOR -->
+    <record id="group_sims_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="privilege_id" ref="privilege_sims_core"/>
+        <field name="implied_ids"
+               eval="[(4, ref('group_sims_user'))]"/>
+    </record>
+
+</odoo>
+
