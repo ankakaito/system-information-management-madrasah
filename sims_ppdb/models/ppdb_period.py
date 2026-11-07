@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 class SimsPpdbPeriod(models.Model):
     _name = 'sims.ppdb.period'
     _description = 'Periode PPDB'
-    _order = 'academic_year desc'
+    _order = 'academic_year_id desc'
 
     name = fields.Char(
         string='Nama Periode',
@@ -18,10 +18,12 @@ class SimsPpdbPeriod(models.Model):
         copy=False,
     )
 
-    academic_year = fields.Char(
+    academic_year_id = fields.Many2one(
+        comodel_name='sims.academic.year',
         string='Tahun Ajaran',
         required=True,
-        default='2027/2028',
+        ondelete='restrict',
+        index=True,
     )
 
     date_start = fields.Date(
@@ -51,7 +53,7 @@ class SimsPpdbPeriod(models.Model):
         ),
         (
             'year_wave_unique',
-            'unique(academic_year, wave_number)',
+            'unique(academic_year_id, wave_number)',
             'Nomor gelombang harus unik dalam satu tahun ajaran.'
         ),
     ]

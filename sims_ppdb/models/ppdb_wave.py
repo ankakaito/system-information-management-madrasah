@@ -50,11 +50,6 @@ class SimsPpdbWave(models.Model):
         string='Keterangan',
     )
 
-    active = fields.Boolean(
-        string='Aktif',
-        default=True,
-    )
-
     state = fields.Selection(
         selection=[
             ('draft', 'Draft'),
@@ -63,6 +58,7 @@ class SimsPpdbWave(models.Model):
         ],
         string='Status',
         default='draft',
+        tracking=True,
         required=True,
     )
 
@@ -94,6 +90,18 @@ class SimsPpdbWave(models.Model):
                 raise ValidationError(
                     _('Kuota penerimaan tidak boleh atau kurang dari 0.')
                 )
+
+    def action_open(self):
+        for record in self:
+            record.state = 'open'
+    
+    def action_close(self):
+        for record in self:
+            record.state = 'closed'
+
+    def action_reset_draft(self):
+        for record in self:
+            record.state = 'draft'
 
     _sql_constraints = [
         (

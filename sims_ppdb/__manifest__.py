@@ -18,7 +18,10 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': [
+        'base',
+        'sims_core',
+    ],
 
     # always loaded
     'data': [
@@ -29,7 +32,7 @@
         'data/ppdb_sequence.xml',
         'views/ppdb_period_views.xml',
         'views/ppdb_document_type_views.xml',
-        'views/ppdb_selection_component_type_views.xml',
+        #'views/ppdb_selection_component_type_views.xml',
         'views/ppdb_selection_component_views.xml',
         'views/ppdb_registration_path_views.xml',
         'views/ppdb_achievement_type_views.xml',

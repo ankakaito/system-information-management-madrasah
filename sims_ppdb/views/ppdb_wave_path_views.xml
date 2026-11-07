@@ -9,7 +9,7 @@
             <list string="Jalur Pendaftaran per Gelombang">
                 <field name="sequence" widget="handle"/>
                 <field name="period_id"/>
-                <field name="wave_id"/>
+                <field name="wave_id" domain="[('state', '=', 'open')]"/>
                 <field name="registration_path_id"/>
                 <field name="active"/>
             </list>
@@ -35,7 +35,7 @@
                     <group>
                         <group string="Informasi Pendaftaran">
                             <field name="period_id"/>
-                            <field name="wave_id"/>
+                            <field name="wave_id" domain="[('state', '=', 'open')]"/>
                             <field name="sequence"/>
                         </group>
 
@@ -58,16 +58,6 @@
                                     <field name="description"/>
                                     <field name="active"
                                            column_invisible="True"/>
-                                </list>
-                            </field>
-                        </page>
-
-                        <!-- Komponen Seleksi -->
-                        <page string="Komponen Seleksi" name="selection_components">
-                            <field name="selection_ids">
-                                <list editable="bottom">
-                                    <field name="name"/>
-                                    <field name="active"/>
                                 </list>
                             </field>
                         </page>

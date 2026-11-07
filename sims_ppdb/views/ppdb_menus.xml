@@ -34,13 +34,13 @@
         sequence="20"
     />
 
-    <menuitem
+    <!-- <menuitem
         id="menu_sims_ppdb_selection_component_type"
         name="Jenis Komponen Seleksi"
         parent="menu_sims_ppdb_master"
         action="action_sims_ppdb_selection_component_type"
         sequence="25"
-    />
+    /> -->
 
     <!-- Master Komponen Seleksi -->
     <menuitem

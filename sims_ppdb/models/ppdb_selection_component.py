@@ -18,31 +18,6 @@ class SimsPpdbSelectionComponent(models.Model):
         copy=False,
     )
 
-    component_type_id = fields.Many2one(
-        comodel_name='sims.ppdb.selection.component.type',
-        string='Jenis Komponen',
-        required=True,
-        ondelete='restrict',
-        domain="[('active', '=', True)]",
-    )
-
-    max_score = fields.Float(
-        string='Nilai Maksimal',
-        required=True,
-        default=100.0,
-    )
-
-    weight = fields.Float(
-        string='Bobot (%)',
-        required=True,
-        default=0.0,
-    )
-
-    is_required = fields.Boolean(
-        string='Wajib Diikuti',
-        default=True,
-    )
-
     sequence = fields.Integer(
         string='Urutan',
         default=10,
@@ -78,16 +53,6 @@ class SimsPpdbSelectionComponent(models.Model):
             'name_unique',
             'unique(name)',
             'Nama komponen harus unik.'
-        ),
-        (
-            'max_score_positive',
-            'check(max_score > 0)',
-            'Nilai maksimal harus lebih dari nol.'
-        ),
-        (
-            'weight_range',
-            'check(weight >= 0 and weight <= 100)',
-            'Bobot harus berada pada rentang 0 sampai 100.'
         ),
     ]
 

@@ -41,12 +41,6 @@ class SimsPpdbWavePath(models.Model):
         string='Persyaratan Dokumen',
     )
 
-    selection_ids = fields.One2many(
-        comodel_name='sims.ppdb.wave.path.selection',
-        inverse_name='wave_path_id',
-        string='Komponen Seleksi',
-    )
-
     sequence = fields.Integer(
         string='Urutan',
         default=10,

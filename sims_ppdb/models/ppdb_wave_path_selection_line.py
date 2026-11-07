@@ -1,3 +1,4 @@
+
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
@@ -67,6 +68,10 @@ class SimsPpdbWavePathSelectionLine(models.Model):
         ),
     ]
 
+    # =====================================================
+    # VALIDASI NILAI KOMPONEN
+    # =====================================================
+
     @api.constrains('max_score', 'min_score')
     def _check_score_range(self):
         for record in self:
@@ -85,6 +90,10 @@ class SimsPpdbWavePathSelectionLine(models.Model):
                     _('Nilai ambang batas tidak boleh melebihi nilai maksimal.')
                 )
 
+    # =====================================================
+    # VALIDASI BOBOT INDIVIDUAL
+    # =====================================================
+
     @api.constrains('weight')
     def _check_weight(self):
         for record in self:
@@ -92,3 +101,37 @@ class SimsPpdbWavePathSelectionLine(models.Model):
                 raise ValidationError(
                     _('Bobot harus berada antara 0 sampai 100 persen.')
                 )
+
+    # =====================================================
+    # VALIDASI TOTAL BOBOT SAAT CREATE
+    # =====================================================
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        configs = records.mapped('selection_config_id')
+        configs._validate_total_weight()
+        return records
+
+    # =====================================================
+    # VALIDASI TOTAL BOBOT SAAT WRITE
+    # =====================================================
+
+    def write(self, vals):
+        old_configs = self.mapped('selection_config_id')
+        result = super().write(vals)
+        new_configs = self.mapped('selection_config_id')
+        configs = old_configs | new_configs
+        configs._validate_total_weight()
+        return result
+
+    # =====================================================
+    # VALIDASI TOTAL BOBOT SAAT DELETE
+    # =====================================================
+
+    def unlink(self):
+        configs = self.mapped('selection_config_id')
+        result = super().unlink()
+        configs._validate_total_weight()
+        return result
+

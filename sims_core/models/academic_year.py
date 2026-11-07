@@ -74,8 +74,8 @@ class SimsAcademicYear(models.Model):
 
             overlap = self.search([
                 ('id', '!=', record.id),
-                ('date_start', '<=', record.date_end),
-                ('date_end', '>=', record.date_start),
+                ('date_start', '<', record.date_end),
+                ('date_end', '>', record.date_start),
             ], limit=1)
 
             if overlap:

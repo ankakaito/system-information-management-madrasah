@@ -33,36 +33,31 @@
                     <group>
                         <field name="active"/>
                     </group>
-
+                    <!-- <group>
+                        <field name="total_weight" readonly="1"/>
+                    </group> -->
                     <notebook>
-                        <page string="Komponen Seleksi"
-                              name="selection_components">
-
+                        <page string="Komponen Seleksi" name="selection_components">
                             <field name="selection_component_ids">
                                 <list editable="bottom">
-                                    <field name="sequence"
-                                           widget="handle"/>
-
-                                    <field name="selection_component_id"
-                                           options="{'no_create': True}"/>
-
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="selection_component_id" options="{'no_create': True}"/>
                                     <field name="max_score"/>
                                     <field name="min_score"/>
                                     <field name="weight"/>
                                     <field name="is_required"/>
-                                    <field name="active"
-                                           column_invisible="True"/>
+                                    <field name="active" column_invisible="True"/>
                                 </list>
                             </field>
-
+                            <div class="d-flex justify-content-end align-items-center gap-3 mt-3 mb-3">
+                                <label for="total_weight" string="Total Bobot (%)"/>
+                                <field name="total_weight" nolabel="1" readonly="1" class="oe_inline"/>
+                            </div>
                         </page>
-
-                        <page string="Keterangan"
-                              name="description">
+                        <page string="Keterangan" name="description">
                             <field name="description"/>
                         </page>
                     </notebook>
-
                 </sheet>
             </form>
         </field>

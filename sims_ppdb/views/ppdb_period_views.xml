@@ -6,7 +6,7 @@
             <list string="Periode PPDB">
                 <field name="code"/>
                 <field name="name"/>
-                <field name="academic_year"/>
+                <field name="academic_year_id" domain="[('state', '=', 'active')]"/>
                 <field name="date_start" widget="date" options="{'numeric': true}"/>
                 <field name="date_end" widget="date" options="{'numeric': true}"/>
                 <field name="active" optional="hide"/>
@@ -25,7 +25,7 @@
                         <h1>
                             <field
                                 name="name"
-                                placeholder="PPDB Gelombang 1 2027/2028"
+                                placeholder="PPDB Gelombang Ke Berapa Di tahun ajaran"
                             />
                         </h1>
                     </div>
@@ -33,7 +33,7 @@
                     <group>
                         <group string="Informasi Periode">
                             <field name="code"/>
-                            <field name="academic_year"/>
+                            <field name="academic_year_id" domain="[('state', '=', 'active')]"/>
                         </group>
 
                         <group string="Jadwal Pendaftaran">
