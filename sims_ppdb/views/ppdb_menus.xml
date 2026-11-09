@@ -104,5 +104,20 @@
         action="action_sims_ppdb_wave_path_selection"
         sequence="40"
     />
+
+    <!-- Menu Pendaftaran -->
+    <menuitem
+        id="menu_sims_ppdb_registration"
+        name="Pendaftaran"
+        parent="menu_sims_ppdb_root"
+        sequence="30"
+    />
+    <menuitem
+        id="menu_sims_ppdb_applicant"
+        name="Data Pendaftar"
+        parent="menu_sims_ppdb_registration"
+        action="action_sims_ppdb_applicant"
+        sequence="10"
+    />
 </odoo>
 

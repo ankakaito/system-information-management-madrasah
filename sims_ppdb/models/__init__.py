@@ -10,4 +10,5 @@ from . import ppdb_wave_path
 from . import ppdb_wave_path_selection
 from . import ppdb_wave_path_selection_line
 #from . import ppdb_selection_component_type
+from . import ppdb_applicant
 

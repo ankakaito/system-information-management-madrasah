@@ -1,0 +1,163 @@
+
+<odoo>
+
+    <!-- ===================================================== -->
+    <!-- LIST VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_sims_ppdb_applicant_list" model="ir.ui.view">
+        <field name="name">sims.ppdb.applicant.list</field>
+        <field name="model">sims.ppdb.applicant</field>
+        <field name="arch" type="xml">
+            <list string="Data Pendaftar PPDB"
+                  decoration-success="state == 'accepted'"
+                  decoration-warning="state == 'waitlist'"
+                  decoration-danger="state in ('rejected', 'cancelled')">
+
+                <field name="registration_number"/>
+                <field name="registration_date" widget="date" options="{'numeric': true}"/>
+                <field name="name"/>
+                <field name="nik"/>
+                <field name="gender"/>
+                <field name="period_id"/>
+                <field name="wave_path_id"/>
+                <field name="registration_type"/>
+                <field name="state" widget="badge"/>
+                <field name="user_id" optional="hide"/>
+
+            </list>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- FORM VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_sims_ppdb_applicant_form" model="ir.ui.view">
+        <field name="name">sims.ppdb.applicant.form</field>
+        <field name="model">sims.ppdb.applicant</field>
+        <field name="arch" type="xml">
+            <form string="Data Pendaftar">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,verified,selection,accepted"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Nama Lengkap Calon Siswa"/>
+                        <h1>
+                            <field name="name" placeholder="Masukkan nama lengkap calon siswa"/>
+                        </h1>
+                        <h3>
+                            <field name="registration_number" readonly="1"/>
+                        </h3>
+                    </div>
+
+                    <!-- INFORMASI PENDAFTARAN -->
+                    <group string="Informasi Pendaftaran">
+                        <group>
+                            <field name="registration_date" widget="date" options="{'numeric': true}"/>
+                            <field name="registration_type"/>
+                            <field name="period_id"/>
+                            <field name="wave_path_id" domain="[('period_id', '=', period_id), ('active', '=', True)]" options="{'no_create': True}"/>
+                        </group>
+                        <group>
+
+                            <field name="user_id" readonly="1"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <separator string="Identitas Calon Siswa"/>
+                    <group>
+                        <group>
+                            <field name="nik"/>
+                            <field name="nisn"/>
+                            <field name="gender"/>
+                            <field name="religion"/>
+                        </group>
+                        <group>
+                            <field name="birth_place"/>
+                            <field name="birth_date" widget="date" options="{'numeric': true}"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="address" placeholder="Masukkan alamat lengkap calon siswa" nolabel="1"/>
+                    </group>
+                    <separator string="Riwayat Pendidikan Sebelumnya"/>
+                    <group>
+                        <group>
+                            <field name="school_origin"/>
+                            <field name="school_origin_npsn"/>
+                        </group>
+                        <group>
+                            <field name="school_origin_address"/>
+                            <field name="graduation_year"/>
+                        </group>
+                    </group>
+                    <!-- TAB PENGEMBANGAN SELANJUTNYA -->
+                    <notebook>
+                        <page string="Orang Tua / Wali" name="parent_information">
+                            <div class="text-muted">
+                                Data orang tua dan wali akan ditambahkan
+                                pada tahap pengembangan berikutnya.
+                            </div>
+                        </page>
+                        <page string="Dokumen Persyaratan" name="document_information">
+                            <div class="text-muted">
+                                Pengelolaan dokumen persyaratan akan
+                                ditambahkan pada tahap berikutnya.
+                            </div>
+                        </page>
+                        <page string="Prestasi" name="achievement_information">
+                            <div class="text-muted">
+                                Data prestasi calon siswa akan
+                                ditambahkan pada tahap berikutnya.
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!-- SEARCH VIEW -->
+    <!-- ===================================================== -->
+
+    <record id="view_sims_ppdb_applicant_search" model="ir.ui.view">
+        <field name="name">sims.ppdb.applicant.search</field>
+        <field name="model">sims.ppdb.applicant</field>
+        <field name="arch" type="xml">
+            <search string="Cari Pendaftar">
+                <field name="registration_number"/>
+                <field name="name"/>
+                <field name="nik"/>
+                <field name="nisn"/>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- ===================================================== -->
+    <!-- ACTION -->
+    <!-- ===================================================== -->
+
+    <record id="action_sims_ppdb_applicant" model="ir.actions.act_window">
+        <field name="name">Data Pendaftar</field>
+        <field name="res_model">sims.ppdb.applicant</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_sims_ppdb_applicant_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada data pendaftar.
+            </p>
+            <p>
+                Klik tombol New untuk menambahkan calon siswa baru.
+            </p>
+        </field>
+    </record>
+</odoo>
+

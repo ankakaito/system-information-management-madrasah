@@ -40,6 +40,7 @@
         'views/ppdb_wave_views.xml',
         'views/ppdb_wave_path_views.xml',
         'views/ppdb_wave_path_selection_views.xml',
+        'views/ppdb_applicant_views.xml',
         'views/ppdb_menus.xml',
     ],
     # only loaded in demonstration mode

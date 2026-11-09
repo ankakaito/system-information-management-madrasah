@@ -1,0 +1,30 @@
+SIMS
+│
+├── SIMS Core
+│   ├── Profil Sekolah (res.company)
+│   ├── Tahun Ajaran
+│   ├── Semester
+│   └── Konfigurasi Umum
+│
+├── SIMS PPDB
+│   ├── Periode PPDB
+│   ├── Gelombang Pendaftaran
+│   ├── Jalur Pendaftaran
+│   ├── Kuota Penerimaan
+│   ├── Persyaratan Dokumen
+│   ├── Komponen Seleksi
+│   ├── Pendaftar / Applicant
+│   ├── Penilaian Seleksi
+│   └── Hasil Seleksi
+│
+├── SIMS Student
+│   ├── Master Siswa
+│   ├── Identitas Siswa
+│   ├── Orang Tua / Wali
+│   └── Riwayat Pendidikan
+│
+└── SIMS Academic
+    ├── Kelas
+    ├── Rombongan Belajar
+    ├── Mata Pelajaran
+    └── Penempatan Siswa

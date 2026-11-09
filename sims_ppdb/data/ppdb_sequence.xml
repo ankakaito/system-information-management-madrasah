@@ -70,5 +70,14 @@
             <field name="company_id" eval="False"/>
         </record>
 
+        <record id="seq_sims_ppdb_applicant" model="ir.sequence">
+            <field name="name">Nomor Pendaftaran PPDB</field>
+            <field name="code">sims.ppdb.applicant</field>
+            <field name="prefix">CSDB</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+        
     </data>
 </odoo>
