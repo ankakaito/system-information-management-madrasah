@@ -119,6 +119,19 @@ class SimsPpdbApplicant(models.Model):
         string='Agama',
     )
 
+
+    religion = fields.Selection(
+        selection=[
+            ('islam', 'Islam'),
+            ('protestan', 'Kristen Protestan'),
+            ('katolik', 'Kristen Katolik'),
+            ('protestan', 'Budha'),
+            ('hindu', 'Hindu'),
+            ('konghucu', 'Konghucu'),
+        ],
+        string='Agama',
+    )
+
     address = fields.Text(
         string='Alamat Lengkap',
     )
@@ -242,4 +255,84 @@ class SimsPpdbApplicant(models.Model):
         'unique(registration_number)',
         'Nomor pendaftaran sudah digunakan.',
     )
+
+
+    # ==========================================
+    # DATA ORANG TUA / WALI
+    # ==========================================
+
+    # DATA AYAH
+    father_name = fields.Char(string='Nama Ayah')
+    father_nik = fields.Char(string='NIK Ayah', size=16)
+    father_education = fields.Selection(
+        selection=[
+            ('sd', 'SD / MI'),
+            ('smp', 'SMP / MTs'),
+            ('sma', 'SMA / MA / SMK'),
+            ('d1_d3', 'Diploma'),
+            ('s1', 'S1'),
+            ('s2', 'S2'),
+            ('s3', 'S3'),
+            ('other', 'Lainnya'),
+        ],
+        string='Pendidikan Terakhir Ayah',
+    )
+    father_occupation = fields.Char(string='Pekerjaan Ayah')
+    father_income = fields.Float(string='Penghasilan Ayah per Bulan')
+    father_phone = fields.Char(string='Nomor Telepon Ayah')
+    father_email = fields.Char(string='Email Ayah')
+
+    # DATA IBU
+    mother_name = fields.Char(string='Nama Ibu')
+    mother_nik = fields.Char(string='NIK Ibu', size=16)
+    mother_education = fields.Selection(
+        selection=[
+            ('sd', 'SD / MI'),
+            ('smp', 'SMP / MTs'),
+            ('sma', 'SMA / MA / SMK'),
+            ('d1_d3', 'Diploma'),
+            ('s1', 'S1'),
+            ('s2', 'S2'),
+            ('s3', 'S3'),
+            ('other', 'Lainnya'),
+        ],
+        string='Pendidikan Terakhir Ibu',
+    )
+    mother_occupation = fields.Char(string='Pekerjaan Ibu')
+    mother_income = fields.Float(string='Penghasilan Ibu per Bulan')
+    mother_phone = fields.Char(string='Nomor Telepon Ibu')
+    mother_email = fields.Char(string='Email Ibu')
+
+    # DATA WALI
+    guardian_name = fields.Char(string='Nama Wali')
+    guardian_nik = fields.Char(string='NIK Wali', size=16)
+    guardian_relationship = fields.Selection(
+        selection=[
+            ('grandfather', 'Kakek'),
+            ('grandmother', 'Nenek'),
+            ('uncle', 'Paman'),
+            ('aunt', 'Bibi'),
+            ('sibling', 'Saudara'),
+            ('other', 'Lainnya'),
+        ],
+        string='Hubungan dengan Calon Siswa',
+    )
+    guardian_education = fields.Selection(
+        selection=[
+            ('sd', 'SD / MI'),
+            ('smp', 'SMP / MTs'),
+            ('sma', 'SMA / MA / SMK'),
+            ('d1_d3', 'Diploma'),
+            ('s1', 'S1'),
+            ('s2', 'S2'),
+            ('s3', 'S3'),
+            ('other', 'Lainnya'),
+        ],
+        string='Pendidikan Terakhir Wali',
+    )
+    guardian_occupation = fields.Char(string='Pekerjaan Wali')
+    guardian_income = fields.Float(string='Penghasilan Wali per Bulan')
+    guardian_phone = fields.Char(string='Nomor Telepon Wali')
+    guardian_email = fields.Char(string='Email Wali')
+    guardian_address = fields.Text(string='Alamat Wali')
 

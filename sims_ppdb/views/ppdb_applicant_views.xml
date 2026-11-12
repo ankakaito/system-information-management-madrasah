@@ -100,10 +100,54 @@
                     <!-- TAB PENGEMBANGAN SELANJUTNYA -->
                     <notebook>
                         <page string="Orang Tua / Wali" name="parent_information">
-                            <div class="text-muted">
-                                Data orang tua dan wali akan ditambahkan
-                                pada tahap pengembangan berikutnya.
-                            </div>
+                            <!-- DATA AYAH -->
+                            <separator string="DATA AYAH"/>
+                            <group>
+                                <group>
+                                    <field name="father_name"/>
+                                    <field name="father_nik"/>
+                                    <field name="father_education"/>
+                                    <field name="father_occupation"/>
+                                </group>
+                                <group>
+                                    <field name="father_income"/>
+                                    <field name="father_phone" widget="phone"/>
+                                    <field name="father_email" widget="email"/>
+                                </group>
+                            </group>
+                        
+                            <!-- DATA IBU -->
+                            <separator string="DATA IBU"/>
+                            <group>
+                                <group>
+                                    <field name="mother_name"/>
+                                    <field name="mother_nik"/>
+                                    <field name="mother_education"/>
+                                    <field name="mother_occupation"/>
+                                </group>
+                                <group>
+                                    <field name="mother_income"/>
+                                    <field name="mother_phone" widget="phone"/>
+                                    <field name="mother_email" widget="email"/>
+                                </group>
+                            </group>
+                            <!-- DATA WALI -->
+                            <separator string="DATA WALI (OPSIONAL)"/>
+                            <group>
+                                <group>
+                                    <field name="guardian_name"/>
+                                    <field name="guardian_nik"/>
+                                    <field name="guardian_relationship"/>
+                                    <field name="guardian_education"/>
+                                    <field name="guardian_occupation"/>
+                                </group>
+                                <group>
+                                    <field name="guardian_income"/>
+                                    <field name="guardian_phone" widget="phone"/>
+                                    <field name="guardian_email" widget="email"/>
+                                    <field name="guardian_address"/>
+                                </group>
+                            </group>
                         </page>
                         <page string="Dokumen Persyaratan" name="document_information">
                             <div class="text-muted">
