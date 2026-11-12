@@ -151,9 +151,26 @@
                         </page>
                         <page string="Dokumen Persyaratan" name="document_information">
                             <div class="text-muted">
-                                Pengelolaan dokumen persyaratan akan
-                                ditambahkan pada tahap berikutnya.
+                                Unggah dokumen sesuai persyaratan gelombang dan jalur pendaftaran.
                             </div>
+                            <field name="document_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="document_requirement_id"
+                                           domain="[('wave_path_id', '=', parent.wave_path_id), ('active', '=', True)]"
+                                           options="{'no_create': True, 'no_open': True}"/>
+                                    <field name="document_type_id" readonly="1"/>
+                                    <field name="is_required" readonly="1"/>
+                                    <field name="filename" column_invisible="True"/>
+                                    <field name="file"
+                                           filename="filename"
+                                           widget="binary"
+                                           string="Upload Dokumen"/>
+                                    <field name="upload_date"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="verification_note" optional="hide"/>
+                                </list>
+                            </field>
                         </page>
                         <page string="Prestasi" name="achievement_information">
                             <div class="text-muted">

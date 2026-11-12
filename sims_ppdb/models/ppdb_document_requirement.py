@@ -20,6 +20,13 @@ class SimsPpdbDocumentRequirement(models.Model):
         ondelete='restrict',
     )
 
+    name = fields.Char(
+        string='Nama Persyaratan',
+        related='document_type_id.name',
+        store=True,
+        readonly=True,
+    )
+
     is_required = fields.Boolean(
         string='Wajib',
         default=True,

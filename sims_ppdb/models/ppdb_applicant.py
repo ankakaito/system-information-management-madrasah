@@ -336,3 +336,8 @@ class SimsPpdbApplicant(models.Model):
     guardian_email = fields.Char(string='Email Wali')
     guardian_address = fields.Text(string='Alamat Wali')
 
+    document_ids = fields.One2many(
+        comodel_name='sims.ppdb.applicant.document',
+        inverse_name='applicant_id',
+        string='Dokumen Persyaratan',
+    )
